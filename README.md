@@ -1,0 +1,9 @@
+# Task 1 — Inconsistencies and Duplicates
+
+Name: Farouk Farahat
+ID: 58-7880  
+Major: Networks
+
+## Part C — Cleaning Explanation
+
+I cleaned the 39-row club sign-up dataset using pandas without modifying the original CSV. The categorical inconsistencies were standardized by stripping spaces, converting values to lowercase, and then using explicit mappings to canonical faculty, club, and city values. For example, Media Engineering and Technology was mapped to MET, Soccer to Football, and other variants such as Debating and Chess Club were mapped to their canonical club names. Names were cleaned by removing extra spaces and applying consistent capitalization, while emails were stripped and converted to lowercase. The fee_paid values were converted from representations such as yes, Y, TRUE, 1, no, N, false, and 0 into a Boolean column. The two date formats in signed_up_at were parsed into one datetime column, treating slash-formatted dates as day/month/year. I first found and removed 3 exact duplicate rows, reducing the dataset from 39 to 36 rows. After standardizing club names, I found 4 duplicate student-and-club sign-ups and kept the latest submission because it represents the student's most recent information, such as an updated payment status. This left 32 rows. The order of cleaning matters: before standardizing club names, only 2 student-and-club duplicates were detected, while 4 were found afterward. Finally, I used student_id and club rather than full_name to identify duplicates, preventing the two different students with the same name from being incorrectly merged.
